@@ -18,11 +18,13 @@ class LinkConverter implements ConverterInterface
         $text = trim($element->getValue());
 
         if ($title !== '') {
-            $markdown = '[' . $text . '](' . $href . ' "' . $title . '")';
+
+            $markdown = '[' . $text . '|' . $href . ']';
         } elseif ($href === $text && $this->isValidAutolink($href)) {
-            $markdown = '<' . $href . '>';
+
+            $markdown = '[' . $href . ']';
         } else {
-            $markdown = '[' . $text . '](' . $href . ')';
+            $markdown = '[' . $text . '|' . $href . ']';
         }
 
         if (!$href) {
